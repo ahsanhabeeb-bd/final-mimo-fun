@@ -9,11 +9,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity
 {
 
     private Button sign_phone;
     private Button sign_mail;
+
+    private FirebaseAuth auth;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,14 @@ public class MainActivity extends AppCompatActivity
 
         sign_phone =findViewById(R.id.sign_phone);
         sign_mail =findViewById(R.id.sign_mail);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if(user != null){
+            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            finish();
+        }
 
         sign_phone.setOnClickListener(new View.OnClickListener() {
             @Override

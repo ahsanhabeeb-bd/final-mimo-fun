@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_mail_Activity"
+    tools:context=".Forgate_pass_Activity"
     android:orientation="vertical"
-    android:background="@drawable/email_log_bg"
+    android:background="@drawable/for_bg1"
     >
 
     <TextView
@@ -17,8 +17,8 @@
         android:gravity="center"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:text="Login"
-        android:textColor="@color/white"
+        android:text="Forgot \nPassword"
+        android:textColor="#ffc2b3"
         android:textSize="50sp" />
 
     <LinearLayout
@@ -46,74 +46,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="60dp"
                     android:hint="email"
                     android:textColorHint="@color/white"
+
+
 
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mail"
+                        android:id="@+id/f_mail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/kasatom_linier"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/white"
+                        android:autofillHints="emailAddress"
 
                         />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:hint="password"
-                    app:passwordToggleEnabled="true"
-
-                    android:textColorHint="@color/white"
 
 
 
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/kasatom_linier"
-                        android:inputType="textPassword"
-                        android:textColor="@color/white" />
-
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/forgate_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Forgot Password"
-                    android:textColor="#008ae6"
-                    android:textSize="15sp"
-                    android:layout_marginRight="10dp"
-                    />
 
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                    android:id="@+id/submit"
+                    android:id="@+id/f_submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="60dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="60dp"
                     android:backgroundTint="#20FFFFFF"
-                    android:fontFamily="@font/audiowide"
-                    android:gravity="center_horizontal"
                     android:text="Submit"
-                    android:textColor="#003300"
+                    android:gravity="center_horizontal"
                     android:textSize="30dp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/audiowide"
+                    android:textStyle="bold"
+                    android:textColor="#e6f2ff"
+                    />
+
+
 
 
             </LinearLayout>
@@ -125,21 +101,6 @@
 
 
     </LinearLayout>
-
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/registration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#20FFFFFF"
-        android:fontFamily="@font/audiowide"
-        android:gravity="center_horizontal"
-        android:text="Registration"
-        android:textColor="#003380"
-        android:textSize="25sp"
-        android:textStyle="bold" />
 
 
 </LinearLayout>
