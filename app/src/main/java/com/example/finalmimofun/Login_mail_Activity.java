@@ -87,7 +87,7 @@ public class Login_mail_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(Login_mail_Activity.this,ProfileActivity.class));
+                            startActivity(new Intent(Login_mail_Activity.this,HomeActivity.class));
                             finish();
                         }else {
                             Toast.makeText(Login_mail_Activity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();

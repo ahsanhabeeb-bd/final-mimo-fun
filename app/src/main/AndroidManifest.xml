@@ -4,8 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +17,42 @@
         android:theme="@style/Theme.FinalMimoFun"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".LiveActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ScarceActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RelateActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Profile_data_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -39,7 +73,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Profile_data_Activity"
+            android:name=".Registration_mail_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -60,7 +94,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Registration_mail_Activity"
+            android:name=".HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

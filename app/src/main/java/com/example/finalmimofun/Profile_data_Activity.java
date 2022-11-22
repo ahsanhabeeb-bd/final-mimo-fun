@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,6 +46,8 @@ public class Profile_data_Activity extends AppCompatActivity
     private EditText name;
     private EditText age;
     private Button save_data;
+    private RadioGroup gender;
+    private RadioButton m_or_fe;
    // private ProgressBar progress;
 
     private FirebaseAuth auth;
@@ -50,9 +55,6 @@ public class Profile_data_Activity extends AppCompatActivity
 
     final int min = 10000000;
     final int max = 99999999;
-
-
-
 
     StorageReference uploader;
 
@@ -70,18 +72,10 @@ public class Profile_data_Activity extends AppCompatActivity
         name = findViewById(R.id.name);
         age = findViewById(R.id.age);
         save_data = findViewById(R.id.save_data);
-      //  progress = findViewById(R.id.progress);
+        gender = findViewById(R.id.gender);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        //db =FirebaseDatabase.getInstance();
-        //root = db.getReference();
-
-
-
-
-
-
 
 
 
@@ -120,17 +114,25 @@ public class Profile_data_Activity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                profile_data();
+
+                if(name.getText().toString().isEmpty())
+                {
+                    Toast.makeText(Profile_data_Activity.this, "Name is empty", Toast.LENGTH_SHORT).show();
+                }
+                else if(age.getText().toString().isEmpty())
+                {
+                    Toast.makeText(Profile_data_Activity.this, "age is empty", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    profile_data();
+                }
+
 
 
             }
         });
     }
-
-
-
-
-
 
 
     @Override
@@ -158,7 +160,7 @@ public class Profile_data_Activity extends AppCompatActivity
         progress.setVisibility(View.VISIBLE);
         FirebaseStorage storage;
         storage = FirebaseStorage.getInstance();
-        uploader =storage.getReference("Image");
+        uploader =storage.getReference("Image"+new Random().nextInt(999999999));
         uploader.putFile(filepath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -171,6 +173,11 @@ public class Profile_data_Activity extends AppCompatActivity
                                         FirebaseDatabase db = FirebaseDatabase.getInstance();
                                         DatabaseReference root = db.getReference();
 
+                                        int seclected = gender.getCheckedRadioButtonId();
+                                        m_or_fe = (RadioButton) findViewById(seclected);
+                                        String gen = m_or_fe.getText().toString();
+
+
                                         // make uid
 
                                         final int random = new Random().nextInt((max - min) + 1) + min;
@@ -181,6 +188,8 @@ public class Profile_data_Activity extends AppCompatActivity
 
                                         map.put("email",user.getEmail());
                                         map.put("id_number",random);
+                                        map.put("gender",gen);
+
 
                                         map.put("name",""+name.getText().toString());
                                         map.put("age",""+age.getText().toString());
