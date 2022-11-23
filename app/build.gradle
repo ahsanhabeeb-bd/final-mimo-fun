@@ -37,6 +37,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
@@ -48,6 +50,10 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
     //image slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+    //for lottie animation
+    implementation 'com.airbnb.android:lottie:5.2.0'
+    //for compress photo
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
 
 

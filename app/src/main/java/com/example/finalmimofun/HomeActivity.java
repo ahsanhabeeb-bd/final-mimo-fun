@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -33,6 +35,10 @@ public class HomeActivity extends AppCompatActivity
     private ImageView profile1;
 
     private ImageSlider slider;
+
+
+
+
 
 
     private FirebaseAuth auth;
@@ -71,6 +77,8 @@ public class HomeActivity extends AppCompatActivity
         slideModels.add(new SlideModel(R.drawable.slide4,ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.slide5,ScaleTypes.FIT));
 
+
+
         slider.setImageList(slideModels,ScaleTypes.FIT);
 
         //slider End
@@ -90,6 +98,10 @@ public class HomeActivity extends AppCompatActivity
                 hot_id_view.setVisibility(View.INVISIBLE);
                 startActivity(new Intent(HomeActivity.this,RelateActivity.class));
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slid_out_right);
+                related_id.setTextSize(20);
+                related_id_view.setVisibility(View.INVISIBLE);
+                hot_id.setTextSize(22);
+                hot_id_view.setVisibility(View.VISIBLE);
             }
         });
 
@@ -157,4 +169,16 @@ public class HomeActivity extends AppCompatActivity
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(HomeActivity.this,HomeActivity.class));
+        moveTaskToBack(true);
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+
+        System.exit(1);
+
+    }
+
 }
