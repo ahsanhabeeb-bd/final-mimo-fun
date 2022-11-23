@@ -1,7 +1,9 @@
 package com.example.finalmimofun;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,6 +43,8 @@ public class HomeActivity extends AppCompatActivity
 
 
 
+
+
     private FirebaseAuth auth;
 
     @Override
@@ -63,6 +67,8 @@ public class HomeActivity extends AppCompatActivity
         game1 = findViewById(R.id.game1);
         chat1 = findViewById(R.id.chat1);
         profile1 = findViewById(R.id.profile1);
+
+
 
 
         slider = findViewById(R.id.slider);
@@ -172,12 +178,33 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(HomeActivity.this,HomeActivity.class));
-        moveTaskToBack(true);
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        builder.setTitle("Confirm Exit");
+        builder.setIcon(R.drawable.exit_icon);
+        builder.setMessage("Press Exit for EXIT\npress Cancel for stay ");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(HomeActivity.this,HomeActivity.class));
+                moveTaskToBack(true);
 
-        android.os.Process.killProcess(android.os.Process.myPid());
+                android.os.Process.killProcess(android.os.Process.myPid());
 
-        System.exit(1);
+                System.exit(1);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
 
     }
 

@@ -77,6 +77,11 @@ public class Profile_data_Activity extends AppCompatActivity
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
+       // photo.setImageResource(R.drawable.add_photo2);
+
+       // photo.setImageDrawable(getResources().getDrawable(R.drawable.chat_icon_re));
+      // String photo_scr = photo.getTag().toString();
+
 
 
 
@@ -109,7 +114,6 @@ public class Profile_data_Activity extends AppCompatActivity
             }
         });
 
-
         save_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -132,6 +136,8 @@ public class Profile_data_Activity extends AppCompatActivity
 
             }
         });
+
+
     }
 
 

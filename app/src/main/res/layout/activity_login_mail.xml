@@ -27,15 +27,9 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/kasatom_linier"
         >
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:padding="30dp"
-            app:cardCornerRadius="40dp"
-            android:elevation="10dp"
-            android:backgroundTint="#05FFFFFF"
-            >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +53,7 @@
                         android:background="@drawable/kasatom_linier"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/white"
+                        android:layout_marginHorizontal="20dp"
 
                         />
 
@@ -85,7 +80,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/kasatom_linier"
                         android:inputType="textPassword"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:layout_marginHorizontal="20dp"
+                        />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +95,7 @@
                     android:text="Forgot Password"
                     android:textColor="#008ae6"
                     android:textSize="15sp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="40dp"
                     />
 
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -119,7 +116,7 @@
             </LinearLayout>
 
 
-        </androidx.cardview.widget.CardView>
+
 
 
 

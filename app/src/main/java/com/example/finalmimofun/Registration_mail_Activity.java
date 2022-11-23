@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class Registration_mail_Activity extends AppCompatActivity
     private EditText password_re;
     private EditText re_password_re;
     private Button submit_re;
+    private ProgressBar progress1;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
@@ -52,10 +54,14 @@ public class Registration_mail_Activity extends AppCompatActivity
         user = auth.getCurrentUser();
 
 
+        progress1 = findViewById(R.id.progress1);
+
+
 
         submit_re.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progress1.setVisibility(View.VISIBLE);
                 String mail1 = mail_re.getText().toString();
                 String pas1 = password_re.getText().toString();
                 String pas2 = re_password_re.getText().toString();
@@ -91,12 +97,13 @@ public class Registration_mail_Activity extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if(task.isSuccessful()){
-                            Toast.makeText(Registration_mail_Activity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Registration_mail_Activity.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                            progress1.setVisibility(View.INVISIBLE);
 
                             startActivity(new Intent(Registration_mail_Activity.this,Profile_data_Activity.class));
                             finish();
                         } else {
-                            Toast.makeText(Registration_mail_Activity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Registration_mail_Activity.this, ""+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                     }
