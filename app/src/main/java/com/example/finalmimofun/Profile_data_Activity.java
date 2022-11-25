@@ -48,7 +48,7 @@ public class Profile_data_Activity extends AppCompatActivity
     private Button save_data;
     private RadioGroup gender;
     private RadioButton m_or_fe;
-   // private ProgressBar progress;
+
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -102,7 +102,7 @@ public class Profile_data_Activity extends AppCompatActivity
                             @Override
                             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse)
                             {
-
+                                Toast.makeText(Profile_data_Activity.this, "Give Parmition", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -127,7 +127,7 @@ public class Profile_data_Activity extends AppCompatActivity
                 {
                     Toast.makeText(Profile_data_Activity.this, "age is empty", Toast.LENGTH_SHORT).show();
                 }
-                else
+                else 
                 {
                     profile_data();
                 }
@@ -193,6 +193,7 @@ public class Profile_data_Activity extends AppCompatActivity
                                         HashMap<String,Object> map = new HashMap<>();
 
                                         map.put("email",user.getEmail());
+
                                         map.put("id_number",random);
                                         map.put("gender",gen);
 
@@ -236,7 +237,7 @@ public class Profile_data_Activity extends AppCompatActivity
                                         map.put("picture",uri.toString());
                                         //object finish
 
-                                        root.child(""+user.getUid()).child(""+random).setValue(map);
+                                        root.child(""+user.getUid()).setValue(map);
                                         progress.setVisibility(View.INVISIBLE);
                                         startActivity(new Intent(Profile_data_Activity.this,HomeActivity.class));
                                         finish();

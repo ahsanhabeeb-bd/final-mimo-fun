@@ -104,6 +104,7 @@ public class Registration_mail_Activity extends AppCompatActivity
                             finish();
                         } else {
                             Toast.makeText(Registration_mail_Activity.this, ""+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            progress1.setVisibility(View.INVISIBLE);
                         }
 
                     }

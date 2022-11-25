@@ -2,6 +2,8 @@ package com.example.finalmimofun;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +18,9 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -31,12 +35,16 @@ public class HomeActivity extends AppCompatActivity
     private ImageView scarse_id;
     private ImageView live_id;
 
+
+
     private ImageView home1;
     private ImageView game1;
     private ImageView chat1;
     private ImageView profile1;
 
     private ImageSlider slider;
+
+    RecyclerView recview;
 
 
 
@@ -63,6 +71,7 @@ public class HomeActivity extends AppCompatActivity
         scarse_id= findViewById(R.id.scarse_id);
         live_id= findViewById(R.id.live_id);
 
+
         home1 = findViewById(R.id.home1);
         game1 = findViewById(R.id.game1);
         chat1 = findViewById(R.id.chat1);
@@ -72,6 +81,8 @@ public class HomeActivity extends AppCompatActivity
 
 
         slider = findViewById(R.id.slider);
+        //for recialview faifbase connection
+
 
         //Image slider start
 
@@ -174,6 +185,10 @@ public class HomeActivity extends AppCompatActivity
                 finish();
             }
         });
+
+
+
+
     }
 
     @Override
