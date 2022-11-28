@@ -3,9 +3,11 @@ package com.example.finalmimofun;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,9 +29,6 @@ public class ProfileActivity extends AppCompatActivity
     private ImageView bach;
 
     private TextView name1;
-    private TextView age1;
-    private TextView sendin_lavel;
-    private TextView receving_lavel;
     private TextView uid1;
 
     private FirebaseAuth auth;
@@ -38,45 +37,54 @@ public class ProfileActivity extends AppCompatActivity
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
+    private Button recharge,coins,streamer,user_level,friendly_point,vip_center,mall,family,setting,about;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        main_image = (ImageView) findViewById(R.id.main_image);
         photo_round = (CircleImageView) findViewById(R.id.photo_round);
         bach = (ImageView) findViewById(R.id.bach);
         name1 = (TextView) findViewById(R.id.name1);
-        age1 = (TextView) findViewById(R.id.age1);
-        sendin_lavel = (TextView) findViewById(R.id.sendin_lavel);
-        receving_lavel = (TextView) findViewById(R.id.receving_lavel);
         uid1 = (TextView) findViewById(R.id.uid1);
+
+        main_image = (ImageView) findViewById(R.id.main_image);
+
+        //button cousting start
+        recharge = (Button)findViewById(R.id.recharge);
+        coins = (Button)findViewById(R.id.coins);
+        streamer = (Button)findViewById(R.id.streamer);
+        user_level = (Button)findViewById(R.id.user_level);
+        friendly_point = (Button)findViewById(R.id.friendly_point);
+        vip_center = (Button)findViewById(R.id.vip_center);
+        mall = (Button)findViewById(R.id.mall);
+        family = (Button)findViewById(R.id.family);
+        setting = (Button)findViewById(R.id.setting);
+        about = (Button)findViewById(R.id.about);
+
+        //Button cousting end
+
+
 
         auth= FirebaseAuth.getInstance();
         user =auth.getCurrentUser();
 
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child(user.getUid());
+        databaseReference = database.getReference().child("user").child(user.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = String.valueOf(snapshot.child("name").getValue());
-                String age1n = String.valueOf(snapshot.child("age").getValue());
-                String sendin_laveln = String.valueOf(snapshot.child("gift_send_level").getValue());
-                String receving_laveln = String.valueOf(snapshot.child("gift_received_level").getValue());
                 String uid1n = String.valueOf(snapshot.child("id_number").getValue());
                 String uid2n = String.valueOf(snapshot.child("picture").getValue());
 
                 name1.setText(name);
-                age1.setText(age1n);
-                sendin_lavel.setText(sendin_laveln);
-                receving_lavel.setText(receving_laveln);
                 uid1.setText(uid1n);
 
                 Uri uri =user.getPhotoUrl();
-                Picasso.get().load(uid2n).into(main_image);
                 Picasso.get().load(uid2n).into(photo_round);
             }
 
@@ -86,6 +94,92 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
 
+        main_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,Profile_main_image_Activity.class));
+
+            }
+        });
+
+        recharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,RechargeActivity.class));
+            }
+        });
+
+        coins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,CoinsActivity.class));
+
+            }
+        });
+
+        streamer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,StreamerActivity.class));
+
+            }
+        });
+
+        user_level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,User_lavel_Activity.class));
+
+            }
+        });
+
+        friendly_point.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,Friendly_pointActivity.class));
+
+            }
+        });
+
+        vip_center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,Vip_center_Activity.class));
+
+            }
+        });
+
+        mall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,MallActivity.class));
+
+            }
+        });
+
+        family.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,FamilyActivity.class));
+
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,SettingActivity.class));
+
+            }
+        });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,AboutActivity.class));
+
+            }
+        });
 
     }
 

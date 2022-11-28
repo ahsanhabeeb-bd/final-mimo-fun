@@ -44,10 +44,8 @@ public class HomeActivity extends AppCompatActivity
 
     private ImageSlider slider;
 
-    RecyclerView recview;
-
-
-
+    RecyclerView recyclerView;
+    MainAdapter mainAdapter;
 
 
 
@@ -77,14 +75,23 @@ public class HomeActivity extends AppCompatActivity
         chat1 = findViewById(R.id.chat1);
         profile1 = findViewById(R.id.profile1);
 
-
-
-
-        slider = findViewById(R.id.slider);
         //for recialview faifbase connection
+
+        recyclerView =(RecyclerView) findViewById(R.id.rv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<MainModel> options =
+                new FirebaseRecyclerOptions.Builder<MainModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("user"), MainModel.class)
+                        .build();
+
+        mainAdapter=new MainAdapter(options);
+        recyclerView.setAdapter(mainAdapter);
 
 
         //Image slider start
+        slider = findViewById(R.id.slider);
+
 
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
@@ -223,4 +230,16 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mainAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mainAdapter.stopListening();
+    }
 }

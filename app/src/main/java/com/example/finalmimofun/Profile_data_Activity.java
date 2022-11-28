@@ -237,7 +237,7 @@ public class Profile_data_Activity extends AppCompatActivity
                                         map.put("picture",uri.toString());
                                         //object finish
 
-                                        root.child(""+user.getUid()).setValue(map);
+                                        root.child("user").child(""+user.getUid()).setValue(map);
                                         progress.setVisibility(View.INVISIBLE);
                                         startActivity(new Intent(Profile_data_Activity.this,HomeActivity.class));
                                         finish();
