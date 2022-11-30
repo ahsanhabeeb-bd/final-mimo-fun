@@ -1,5 +1,8 @@
 package com.example.finalmimofun;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +53,8 @@ public class Profile_data_Activity extends AppCompatActivity
     private RadioButton m_or_fe;
 
 
+
+
     private FirebaseAuth auth;
     private FirebaseUser user;
 
@@ -82,9 +87,6 @@ public class Profile_data_Activity extends AppCompatActivity
        // photo.setImageDrawable(getResources().getDrawable(R.drawable.chat_icon_re));
       // String photo_scr = photo.getTag().toString();
 
-
-
-
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +115,6 @@ public class Profile_data_Activity extends AppCompatActivity
                         }).check();
             }
         });
-
         save_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -127,7 +128,7 @@ public class Profile_data_Activity extends AppCompatActivity
                 {
                     Toast.makeText(Profile_data_Activity.this, "age is empty", Toast.LENGTH_SHORT).show();
                 }
-                else 
+                else
                 {
                     profile_data();
                 }
@@ -137,8 +138,10 @@ public class Profile_data_Activity extends AppCompatActivity
             }
         });
 
-
     }
+
+
+
 
 
     @Override
@@ -159,6 +162,8 @@ public class Profile_data_Activity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
+
 
     private void profile_data()
     {
@@ -193,6 +198,7 @@ public class Profile_data_Activity extends AppCompatActivity
                                         HashMap<String,Object> map = new HashMap<>();
 
                                         map.put("email",user.getEmail());
+                                        map.put("bio","Here your bio");/// have to change location
 
                                         map.put("id_number",random);
                                         map.put("gender",gen);

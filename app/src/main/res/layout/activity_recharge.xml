@@ -52,6 +52,8 @@
             android:gravity="center"
             android:textColor="#FFCE3B"
             android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:fontFamily="@font/arbutus"
             />
     </LinearLayout>
 

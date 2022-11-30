@@ -20,6 +20,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -44,14 +45,16 @@ public class HomeActivity extends AppCompatActivity
 
     private ImageSlider slider;
 
+    //for recialview start
     RecyclerView recyclerView;
     MainAdapter mainAdapter;
-
-
+    //for recialview end
 
 
 
     private FirebaseAuth auth;
+    private FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -75,7 +78,10 @@ public class HomeActivity extends AppCompatActivity
         chat1 = findViewById(R.id.chat1);
         profile1 = findViewById(R.id.profile1);
 
-        //for recialview faifbase connection
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        //for recialview faifbase connection start
 
         recyclerView =(RecyclerView) findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -87,6 +93,8 @@ public class HomeActivity extends AppCompatActivity
 
         mainAdapter=new MainAdapter(options);
         recyclerView.setAdapter(mainAdapter);
+
+        //for recialview faifbase connection end
 
 
         //Image slider start
@@ -111,7 +119,7 @@ public class HomeActivity extends AppCompatActivity
         logout = findViewById(R.id.logout);
 
 
-        auth = FirebaseAuth.getInstance();
+
 
         related_id.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,7 +238,7 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-
+    //relative start
     @Override
     protected void onStart() {
         super.onStart();
@@ -242,4 +250,5 @@ public class HomeActivity extends AppCompatActivity
         super.onStop();
         mainAdapter.stopListening();
     }
+    //relative end
 }

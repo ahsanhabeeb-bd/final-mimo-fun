@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -84,7 +85,7 @@ public class ProfileActivity extends AppCompatActivity
                 name1.setText(name);
                 uid1.setText(uid1n);
 
-                Uri uri =user.getPhotoUrl();
+               // Uri uri =user.getPhotoUrl();
                 Picasso.get().load(uid2n).into(photo_round);
             }
 
@@ -183,5 +184,9 @@ public class ProfileActivity extends AppCompatActivity
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
+        super.onBackPressed();
+    }
 }
