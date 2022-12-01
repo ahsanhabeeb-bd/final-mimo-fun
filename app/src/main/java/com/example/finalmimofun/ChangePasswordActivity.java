@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -41,7 +42,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit);
 
         auth = FirebaseAuth.getInstance();
-
         user = auth.getCurrentUser();
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -80,15 +80,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                     if (task.isSuccessful()) {
                                                         Toast.makeText(ChangePasswordActivity.this, "Password Reset", Toast.LENGTH_SHORT).show();
 
-                                                    }else {
-                                                        Toast.makeText(ChangePasswordActivity.this, "Fail password re-set", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(ChangePasswordActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                                                }
                                             });
-                                }else{
-                                    Toast.makeText(ChangePasswordActivity.this, "Re-Othencation Fail", Toast.LENGTH_SHORT).show();
                                 }
 
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(ChangePasswordActivity.this, ""+e, Toast.LENGTH_SHORT).show();
                             }
                         });
 
