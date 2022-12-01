@@ -208,10 +208,19 @@ public class Profile_data_Activity extends AppCompatActivity
                                         map.put("age",""+age.getText().toString());
 
                                         map.put("gift_send_level",1);
+                                        map.put("gift_send_target_level",1);
+
                                         map.put("gift_received_level",1);
+                                        map.put("gift_received_target_level",1);
 
                                         map.put("diamond",0);
-                                        map.put("coin",0);
+                                        map.put("coin","0");
+
+                                        map.put("exp_targate_sendin",0);
+                                        map.put("exp_courent_sendin",0);
+
+                                        map.put("exp_targate_receive",0);
+                                        map.put("exp_courent_receive",0);
 
                                         map.put("offer_class1",false);
                                         map.put("official",false);

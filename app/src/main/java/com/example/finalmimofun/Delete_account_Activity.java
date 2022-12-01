@@ -63,6 +63,7 @@ public class Delete_account_Activity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
+
                                                     Toast.makeText(Delete_account_Activity.this, "Good Bye", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(Delete_account_Activity.this,MainActivity.class));
                                                 }
@@ -71,10 +72,10 @@ public class Delete_account_Activity extends AppCompatActivity {
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                if(!task.isSuccessful()){
-                                                    Toast.makeText(Delete_account_Activity.this, ""+e, Toast.LENGTH_SHORT).show();
 
-                                                }
+                                                Toast.makeText(Delete_account_Activity.this, ""+e, Toast.LENGTH_SHORT).show();
+
+
                                             }
                                         });
                             }

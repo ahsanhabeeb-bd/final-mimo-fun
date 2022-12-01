@@ -3,10 +3,12 @@ package com.example.finalmimofun;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -79,6 +81,8 @@ public class EditActivity extends AppCompatActivity
                 databaseReference.child("name").setValue(name2);
                 databaseReference.child("age").setValue(age2);
                 databaseReference.child("bio").setValue(bio2);
+                Toast.makeText(EditActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(EditActivity.this,Profile_main_image_Activity.class));
             }
         });
 
