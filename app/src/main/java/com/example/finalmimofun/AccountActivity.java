@@ -3,7 +3,10 @@ package com.example.finalmimofun;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +21,7 @@ import com.squareup.picasso.Picasso;
 public class AccountActivity extends AppCompatActivity {
 
     private TextView account_name;
+    private Button changepw;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -31,6 +35,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         account_name = (TextView) findViewById(R.id.account_name);
+        changepw = (Button) findViewById(R.id.changepw);
 
         auth= FirebaseAuth.getInstance();
         user =auth.getCurrentUser();
@@ -50,6 +55,12 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        changepw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this,ChangePasswordActivity.class));
             }
         });
 
