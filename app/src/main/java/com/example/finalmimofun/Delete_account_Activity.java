@@ -57,23 +57,33 @@ public class Delete_account_Activity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            user.delete()
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(Delete_account_Activity.this, "Good Bye", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(Delete_account_Activity.this,MainActivity.class));
-                                        }
-                                    }).addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(Delete_account_Activity.this, ""+e, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                            if(task.isSuccessful()){
+                                user.delete()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(Delete_account_Activity.this, "Good Bye", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(Delete_account_Activity.this,MainActivity.class));
+                                                }
+
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                if(!task.isSuccessful()){
+                                                    Toast.makeText(Delete_account_Activity.this, ""+e, Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }
+                                        });
+                            }
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+
                             Toast.makeText(Delete_account_Activity.this, ""+e, Toast.LENGTH_SHORT).show();
                         }
                     });

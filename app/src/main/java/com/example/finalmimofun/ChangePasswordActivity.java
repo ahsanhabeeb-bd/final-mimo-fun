@@ -79,6 +79,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Toast.makeText(ChangePasswordActivity.this, "Password Reset", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(ChangePasswordActivity.this,AccountActivity.class));
 
                                                     }
                                                 }
@@ -100,7 +101,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
             }else {
-                startActivity(new Intent(ChangePasswordActivity.this,MainActivity.class));
+                startActivity(new Intent(ChangePasswordActivity.this,AccountActivity.class));
             }
 
         }
